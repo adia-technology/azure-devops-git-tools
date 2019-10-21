@@ -5,7 +5,9 @@ These scripts require Powershell Core.
 ## clone
 This scripts automates cloning of all repositories within a project. Usage:
 
-`.\Clone-Repos.ps1 -project -pat <devops_personal_access_token>`
+`.\Clone-Repos.ps1 -organisation <devops_organisation> -project <devops_project_name> -pat <devops_personal_access_token>`
+
+The `organisation` and `project` parameters are properties of the Azure DevOps project to interact with. They can be extracted from the project's URL (it's in a form of `dev.azure.com/<organisation>/<project>`) or taken directly from the portal.
 
 A personal access token should be generated in Azure DevOps security settings. A Code/Read permission should be enough.
 
