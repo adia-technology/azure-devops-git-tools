@@ -2,7 +2,7 @@ param (
 	[Parameter(Mandatory=$true)][string]$organisation,
 	[Parameter(Mandatory=$true)][string]$project,
 	[Parameter(Mandatory=$true)][string]$pat,
-	[string]$basePath = '..\..',
+	[string]$basePath = (Join-Path -Path '..' -ChildPath '..'),
 	[switch]$cloneWithHttps
 )
 
@@ -21,7 +21,7 @@ $repos = ($reposResponse.Content | ConvertFrom-Json).value
 
 foreach ($repo in $repos) {
 	$repoPath = $repo."$repoPathProperty"
-	$repoLocation = "$basePath\$($repo.name)"
+	$repoLocation = Join-Path -Path $basePath -ChildPath $repo.name
 	Write-Host "Cloning $($repo.name) from $repoPath into $repoLocation"
 	& 'git' 'clone' $repoPath $repoLocation
 
