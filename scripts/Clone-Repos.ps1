@@ -22,6 +22,11 @@ $repos = ($reposResponse.Content | ConvertFrom-Json).value
 foreach ($repo in $repos) {
 	$repoPath = $repo."$repoPathProperty"
 	$repoLocation = "$basePath\$($repo.name)"
+
+	if ($cloneWithHttps) {
+		$repoPath = $repoPath.Replace("https://$($project)@","https://$($project):$($pat)@")
+	}
+
 	Write-Host "Cloning $($repo.name) from $repoPath into $repoLocation"
 	& 'git' 'clone' $repoPath $repoLocation
 

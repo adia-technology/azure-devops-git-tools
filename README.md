@@ -12,7 +12,9 @@ The `organisation` and `project` parameters are properties of the Azure DevOps p
 A personal access token should be generated in Azure DevOps security settings. A Code/Read permission should be enough.
 
 An optional `-basePath <path>` parameter can be provided to customize cloning target directory.
-By default, SSH is used to clone the repositories. To use HTTPS, pass in the `cloneWithHttps` flag.
+By default, SSH is used to clone the repositories, and you need to make sure to have the right keys installed.
+
+To use HTTPS, pass in the `cloneWithHttps` flag. With `cloneWithHttps` the provided personal access token will be used to checkout the code. 
 
 ## update
 This scripts automates updating of repository contents using `git pull` command. Usage:
