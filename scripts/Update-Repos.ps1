@@ -1,5 +1,5 @@
 param (
-	[string]$basePath = '..\..'
+	[string]$basePath = (Join-Path -Path '..' -ChildPath '..')
 )
 
 Push-Location $basePath
