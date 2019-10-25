@@ -23,7 +23,7 @@ foreach ($repo in $repos) {
 	$repoPath = $repo."$repoPathProperty"
 
 	if ($cloneWithHttps) {
-		$repoPath = $repoPath.Replace("https://$($project)@","https://$($project):$($pat)@")
+		$repoPath = $repoPath -replace "https://.*@", "https://$($pat):$($pat)@"
 	}
 
 	$repoLocation = Join-Path -Path $basePath -ChildPath $repo.name
